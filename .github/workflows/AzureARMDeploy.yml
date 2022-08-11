@@ -5,7 +5,7 @@ name: AzureARMDeploy
 jobs:
 
     deploy:
-      runs-on: ubuntu-latest
+      runs-on: self-hosted
       steps:
 
       - name: Login to Azure
@@ -22,6 +22,6 @@ jobs:
           inlineScript: |
             az deployment group create \
             --name StorageAccountDeployment \
-            --resource-group savdevgithubdeploy \
+            --resource-group GithubPaaSService-rg \
             --template-file armtemplates/storageaccount.json \
             --parameters storageAccountType=Standard_GRS
