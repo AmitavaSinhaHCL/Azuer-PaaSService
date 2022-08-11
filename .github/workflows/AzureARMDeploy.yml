@@ -16,15 +16,6 @@ jobs:
       - name: Checkout source code
         uses: actions/checkout@v2
     
-      - name: Run ARM deploy
-        uses: azure/arm-deploy@v1
-        with:
-            subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
-            resourceGroupName: ${{ secrets.AZURE_RG }}
-            template: ./storageaccount.json
-            parameters: storageAccountType=Standard_LRS
-
-    
       - name: Deploy ARM Template
         uses: azure/CLI@v1
         with:
