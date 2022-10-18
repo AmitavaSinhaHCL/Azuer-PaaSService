@@ -15,13 +15,14 @@ jobs:
 
       - name: Checkout source code
         uses: actions/checkout@v2
+        with:
+            files: 'variables.json'
+        env:      
+          Replicationtype: ${{ secrets.REPLICATIONTYPE }}
     
       - name: Deploy ARM Template
         uses: azure/CLI@v1
         with:
-          files: 'variables.json'
-        env:      
-          Replicationtype: ${{ secrets.REPLICATIONTYPE }}
           inlineScript: |
             az deployment group create \
             --name StorageAccountDeployment \
