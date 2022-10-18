@@ -27,4 +27,4 @@ jobs:
             --name StorageAccountDeployment \
             --resource-group GithubPaaSService-rg \
             --template-file armtemplates/storageaccount.json \
-            --parameters storageAccountType=Replicationtype
+            --parameters storageAccountType=${{ secrets.REPLICATIONTYPE }}
