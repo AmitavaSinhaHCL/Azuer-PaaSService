@@ -1,7 +1,7 @@
 on: [push]
 
 name: AzureARMDeploy
-
+# Use Self Hosted Agent
 jobs:
 
     deploy:
