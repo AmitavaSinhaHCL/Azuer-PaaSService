@@ -28,4 +28,4 @@ jobs:
             --name StorageAccountDeployment \
             --resource-group GithubPaaSService-rg \
             --template-file armtemplates/storageaccount.json \
-            --parameters storageAccountType=${{ env.REPLICATIONTYPE }}
+            --parameters storageAccountType=Standard_LRS
