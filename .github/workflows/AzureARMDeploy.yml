@@ -19,6 +19,7 @@ jobs:
       - name: Deploy ARM Template
         uses: azure/CLI@v1
         with:
+          files: 'variables.json'
           inlineScript: |
             az deployment group create \
             --name StorageAccountDeployment \
