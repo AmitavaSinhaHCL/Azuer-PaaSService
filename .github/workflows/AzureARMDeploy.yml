@@ -18,7 +18,7 @@ jobs:
         with:
             files: 'variables.json'
         env:      
-          Replicationtype: ${{ secrets.REPLICATIONTYPE }}
+          Replicationtype: ${{ env.REPLICATIONTYPE }}
     
       - name: Deploy ARM Template
         uses: azure/CLI@v1
@@ -28,4 +28,4 @@ jobs:
             --name StorageAccountDeployment \
             --resource-group GithubPaaSService-rg \
             --template-file armtemplates/storageaccount.json \
-            --parameters storageAccountType=${{ secrets.REPLICATIONTYPE }}
+            --parameters storageAccountType=${{ env.REPLICATIONTYPE }}
