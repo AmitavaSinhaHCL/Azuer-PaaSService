@@ -20,9 +20,11 @@ jobs:
         uses: azure/CLI@v1
         with:
           files: 'variables.json'
+        env:      
+          Replicationtype: ${{ secrets.REPLICATIONTYPE }}
           inlineScript: |
             az deployment group create \
             --name StorageAccountDeployment \
             --resource-group GithubPaaSService-rg \
             --template-file armtemplates/storageaccount.json \
-            --parameters storageAccountType=Standard_GRS
+            --parameters storageAccountType=Replicationtype
