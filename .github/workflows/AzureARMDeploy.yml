@@ -3,6 +3,10 @@ name: AzureARMDeploy
 # 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
 on:
   workflow_dispatch:
+    inputs:
+      id:
+        description: 'run identifier'
+        required: false
   release:
     types: [created]  
   push:
@@ -12,7 +16,9 @@ jobs:
     deploy:
       runs-on: ubuntu-latest
       steps:
-
+      - name: ${{github.event.inputs.id}}
+        run: echo run identifier ${{ inputs.id }}
+        
       - name: Login to Azure
         uses: azure/login@v1
         with:
