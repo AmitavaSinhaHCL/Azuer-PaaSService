@@ -1,41 +1,15 @@
-name: AzureARMDeploy
-# Use Self Hosted Agent  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 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
-# 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
+name: ID Example
+
 on:
   workflow_dispatch:
     inputs:
       id:
         description: 'run identifier'
         required: false
-  release:
-    types: [created]  
-  push:
-
 jobs:
-    deploy:
-      runs-on: ubuntu-latest
-      steps:
+  id:
+    name: Workflow ID Provider
+    runs-on: ubuntu-latest
+    steps:
       - name: ${{github.event.inputs.id}}
         run: echo run identifier ${{ inputs.id }}
-        
-      - name: Login to Azure
-        uses: azure/login@v1
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-      - name: Checkout source code
-        uses: actions/checkout@v2
-        with:
-            files: 'variables.json'
-        env:      
-          Replicationtype: ${{ env.REPLICATIONTYPE }}
-    
-      - name: Deploy ARM Template
-        uses: azure/CLI@v1
-        with:
-          inlineScript: |
-            az deployment group create \
-            --name StorageAccountDeployment \
-            --resource-group GithubPaaSService-rg \
-            --template-file armtemplates/storageaccount.json \
-            --parameters storageAccountType=Standard_LRS
