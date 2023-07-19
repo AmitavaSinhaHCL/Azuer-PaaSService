@@ -1,19 +1,24 @@
 name: AzureARMDeploy
 # Use Self Hosted Agent  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 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
 # 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
-on:
-  workflow_dispatch:
-    inputs:
-      id:
-        description: 'run identifier'
-        required: false 
+on: 
+   workflow_dispatch:
+     inputs:
+      dispatch_id:
+          description: 'A unique ID provided when dispatching this workflow'
+          required: false
+          type: string
+      name:
+         description: 'Name of application'
+         required: true
+         type: string
 
 jobs:
     deploy:
       runs-on: ubuntu-latest
       steps:
-      - name: ${{github.event.inputs.id}}
-        run: echo ${{github.event.inputs.id}}
+      - name: ${{github.event.inputs.dispatch_id}}
+        run: echo ${{github.event.inputs.dispatch_id}}
         
       - name: Login to Azure
         uses: azure/login@v1
