@@ -6,17 +6,14 @@ on:
     inputs:
       id:
         description: 'run identifier'
-        required: false
-  release:
-    types: [created]  
-  push:
+        required: false 
 
 jobs:
     deploy:
       runs-on: ubuntu-latest
       steps:
       - name: ${{github.event.inputs.id}}
-        run: echo run identifier ${{ inputs.id }}
+        run: echo ${{github.event.inputs.id}}
         
       - name: Login to Azure
         uses: azure/login@v1
