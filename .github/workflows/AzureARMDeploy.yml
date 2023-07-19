@@ -8,10 +8,6 @@ on:
           description: 'A unique ID provided when dispatching this workflow'
           required: false
           type: string
-      name:
-         description: 'Name of application'
-         required: true
-         type: string
 
 jobs:
     deploy:
